@@ -1,0 +1,123 @@
+//insert name
+
+var name
+name = prompt ("Enter Your Beautiful Name")
+document.write("<h5>Hi " +name)
+
+//calculation age
+
+let daysH = document.getElementById("day");
+let monthH = document.getElementById("month");
+let yearH = document.getElementById("year");
+
+let showAge = document.getElementById("show-age");
+
+const btn = document.getElementById("calc-btn");
+
+var today = new Date();
+
+let d = today.getDay();
+let m = today.getMonth() + 1;
+let y = today.getFullYear();
+
+let maxDays = 0;
+let monthNum = 1;
+
+btn.addEventListener("click", (days, month, year) => {
+	days = daysH.value;
+	month = monthH.value;
+	year = yearH.value;
+
+	if(daysH.value == "" || monthH.value == "" || yearH.value == ""){
+		return alert("Please enter your date of birth properly to calculate your age");
+	}
+
+	//no else condition needed
+
+	console.log (`Current Date : ${d} ${m} ${y}`);
+
+	//we need some day numbers as we have different number of days for different months
+
+	if (m == 1) { //January
+		maxDays = 31;
+		monthNum = 1;
+	}
+
+	else if (m == 2) { //February
+		maxDays = 29;
+		monthNum = 2;
+	}
+
+	else if (m == 3) { //March
+		maxDays = 31;
+		monthNum = 3;
+	}
+
+	else if (m == 4) { //April
+		maxDays = 30;
+		monthNum = 4;
+	}
+
+	else if (m == 5) { //May
+		maxDays = 31;
+		monthNum = 5;
+	}
+
+	else if (m == 6) { //June
+		maxDays = 30;
+		monthNum = 6;
+	}
+
+	else if (m == 7) { //July
+		maxDays = 31;
+		monthNum = 7;
+	}
+
+	else if (m == 8) { //August
+		maxDays = 31;
+		monthNum = 8;
+	}
+
+	else if (m == 9) { //September
+		maxDays = 30;
+		monthNum = 9;
+	}
+
+	else if (m == 10) { //October
+		maxDays = 31;
+		monthNum = 10;
+	}
+
+	else if (m == 11) { //November
+		maxDays = 30;
+		monthNum = 11;
+	}
+
+	else { //December
+		maxDays = 31;
+		monthNum = 12;
+	}
+
+
+	var ageYears = y - year;
+
+	if (m <= month) {
+		m = m + 12;
+	}
+
+	var ageMonths = m - month;
+
+	var ageDays = (maxDays - d) + parseInt(days);
+
+	console.log(`Your age is ${ageYears} year, ${ageMonths} month and ${ageDays} day`);
+	showAge.innerHTML = `Your age is ${ageYears} year, ${ageMonths} month and ${ageDays} day`;
+})
+
+	function leapChecker(year){
+    	if(year % 4 == 0 || (year % 100 == 0 && year % 400 == 0)){
+        	months[1] = 29;
+    	}
+    	else{
+        	months[1] = 28;
+    	}
+}
